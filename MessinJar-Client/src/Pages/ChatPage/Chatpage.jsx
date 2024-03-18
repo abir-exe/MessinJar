@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const Chatpage = () => {
 
+    const [chats, setChats] = useState([]);
+
     const fetchChats = async () => {
         try {
             const response = await axios.get("http://localhost:5000/api/chat");
-            console.log(response.data);
+            setChats(response.data);
         } catch (error) {
             console.error("Error fetching chats:", error);
         }
@@ -19,7 +21,9 @@ const Chatpage = () => {
 
     return (
         <div className="min-h-screen">
-            This is chatPage
+            {chats.map((chat) => (
+                <div key={chat._id}>{chat.chatName}</div>
+            ))}
         </div>
     );
 };

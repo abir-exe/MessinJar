@@ -11,7 +11,7 @@ dotenv.config();
 
 // middlewares 
 app.use(cors());
-app.use(express.json());
+app.use(express.json());  //to accept json data
 
 
 connectDB();

@@ -30,6 +30,7 @@ const registerUser = expressAsyncHandler(async(req, res) => {
             name: user.name,
             email: user.email,
             pic: user.pic,
+            token: generateToken(user._id),
         });
     } else {
         res.status(400);
